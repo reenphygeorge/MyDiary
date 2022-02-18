@@ -1,0 +1,21 @@
+.home-head {
+    color: white;
+}
+
+body {
+    background-color: rgb(29, 29, 29);
+}
+
+.navbar-brand{
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+.navbar-nav {
+    margin: auto auto;
+}
+
+.navbar-nav a{
+    font-size: 25px;
+    margin-right: 30px;
+}
