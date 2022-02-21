@@ -22,6 +22,12 @@ app.get('/add', (req,res) => {
 app.get('/view', (req,res) => {
     res.render('view.hbs')
 })
+app.get('/signin', (req,res) => {
+    res.render('signin.hbs')
+})
+app.get('/signup', (req,res) => {
+    res.render('signup.hbs')
+})
 app.all('*', (req, res) => {
     res.status(404).render('404.hbs');
 });
