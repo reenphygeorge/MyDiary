@@ -3,8 +3,9 @@
     <div class="row mt-5 d-flex justify-content-center">
         <div class="card diary-card" style="width: 50rem;">
             <div class="card-body form-floating">
-                <form action="">
-                    <textarea name="" class="diary-entry" cols="70" rows="22" placeholder="start typing..."></textarea>
+                <form action="" method="post">
+                    <input name="diaryDate" class="date" type="date" required>
+                    <textarea name="diaryContent" class="diary-entry mt-3" cols="70" rows="22" placeholder="start typing..." required></textarea>
                     <button href="/home" class="btn btn-success card-link" type="submit">Add</button>
                     <button class="btn btn-success card-link" type="reset">Reset</button>
                 </form>
