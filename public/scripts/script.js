@@ -5,3 +5,7 @@ function signup() {
 function signin() {
     window.location.href = "/signin"
 }
+
+function signout() {
+    window.location.href = "/signout"
+}
