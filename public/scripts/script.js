@@ -9,3 +9,11 @@ function signin() {
 function signout() {
     window.location.href = "/signout"
 }
+
+// let index;
+function viewfull(x) {
+    // index = x;
+    window.location.href = "/viewfull"
+}
+
+// module.exports = index;

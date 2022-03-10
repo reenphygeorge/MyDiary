@@ -6,17 +6,10 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 
 const fs = require('fs');
-
 var signedin = false;
 
-// MongoDB Connection //
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/MyDiary');
-var db=mongoose.connection;
-db.on('error', console.log.bind(console, "connection error"));
-db.once('open', function(callback){
-    console.log("connection succeeded");
-})
+const db = require(__dirname+"/connection")
+const User = require(__dirname+"/userschema")
 
 const bcrypt = require('bcrypt');
 
@@ -50,21 +43,34 @@ app.get('/add', (req, res) => {
     }
 });
 app.post('/add', (req, res) => {
-    let path = "data/"+req.body.diaryDate+".md"
+    let path = "data/"+signedin+"/"+req.body.diaryDate+".md"
     fs.writeFile(path, req.body.diaryContent, (err) => {
         if(err)
             console.log(err)
     })
-    res.status(200).render('success.hbs')
+    res.status(200).render('success.hbs', {layout:'layout2'})
 });
 app.get('/view', (req, res) => {
     if(signedin == false) {
         res.status(200).render('signin.hbs')    
     }
     else {
-        res.status(200).render('view.hbs', {layout:'layout2'})
+        const loc = "data/"+signedin; 
+        fs.readdir(loc, (err, files) => {
+            var jsonfiles = []
+            files.forEach((item, index)=> {
+                var obj = {"fname": item}
+                jsonfiles.push(obj)
+            })
+            res.status(200).render('view.hbs', {jsonfiles, layout:'layout2'})
+        })
     }
 });
+app.get('/viewfull', (req,res) => {
+    res.status(200).render('viewfull.hbs', {layout:'layout2'})
+    // const index = require(__dirname+"/public/scripts/script")
+    // console.log(index)
+})
 app.get('/signin', (req, res) => {
     res.status(200).render('signin.hbs')
 });
@@ -80,30 +86,31 @@ app.post('/signup', (req,res) => {
     var email = req.body.Email;
     var password = req.body.Password;
     bcrypt.hash(password,10).then (hash => {
-        var data = {
+        const data = new User ({
+            "_id": email,
             "name": name,
-            "email": email,
             "password": hash
+        })
+        try {
+            data.save()
+            res.status(200).render('home.hbs', {layout:'layout2'});    
+            signedin = email;
+            fs.mkdir('data/'+signedin,(error) => {
+                if (error) {
+                    console.log(error);
+                }
+            })
+        } catch (error) {
+            console.log(error)
         }
-        if(db.collection('UserData').countDocuments({"email": email}) == 0) {
-            db.collection('UserData').insertOne(data, (err,collection)=>{
-                if (err) throw err;
-                console.log("Record inserted Successfully");
-                signedin = true;
-            });
-            res.status(200).render('home.hbs', {layout:'layout2'});
-        }
-        // else {
-        //     res.status(200).render('signup.hbs');
-        // }
     })
 })
 app.all('*', (req, res) => {
-    if(signedin == true) {
-        res.status(404).render('404.hbs', {layout:'layout2'});    
+    if(signedin == false) {
+        res.status(404).render('404.hbs');    
     }
     else {
-        res.status(404).render('404.hbs');
+        res.status(404).render('404.hbs', {layout:'layout2'});
     }
 });
 const port = process.env.PORT || 5000;
