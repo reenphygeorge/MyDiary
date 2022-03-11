@@ -55,25 +55,47 @@ app.get('/view', (req, res) => {
         res.status(200).render('signin.hbs')    
     }
     else {
-        const loc = "data/"+signedin; 
+        const loc = "data/"+signedin;
+        var jsondiary = [] 
         fs.readdir(loc, (err, files) => {
-            var jsonfiles = []
+
             files.forEach((item, index)=> {
-                var obj = {"fname": item}
-                jsonfiles.push(obj)
+                fs.readFile(loc+"/"+item, 'utf8', function(err, data){
+                    var obj = {"date": item,"data": data}
+                    jsondiary.push(obj)
+                    res.status(200).render('viewfull.hbs', {jsondiary, layout:'layout2'})
+                })
             })
-            res.status(200).render('view.hbs', {jsonfiles, layout:'layout2'})
         })
     }
 });
 app.get('/viewfull', (req,res) => {
     res.status(200).render('viewfull.hbs', {layout:'layout2'})
-    // const index = require(__dirname+"/public/scripts/script")
-    // console.log(index)
 })
 app.get('/signin', (req, res) => {
     res.status(200).render('signin.hbs')
-});
+})
+app.post('/signin', (req,res) => {
+    User.findById(req.body.Email, (err,docs) => {
+        if(err) console.log(err)
+        else {
+            if(docs == null)
+                res.status(200).render('signin.hbs');
+            else
+            {
+                bcrypt.compare(req.body.Password, docs.password, (err,response)=>{
+                    if(response) {
+                        res.status(200).render('home.hbs', {layout:'layout2'});
+                        signedin = docs._id;
+                    }
+                    else {
+                        res.status(200).render('signin.hbs');
+                    }
+                })
+            }
+        }
+    })
+})
 app.get('/signup', (req, res) => {
     res.status(200).render('signup.hbs')
 });
@@ -85,25 +107,32 @@ app.post('/signup', (req,res) => {
     var name = req.body.Name;
     var email = req.body.Email;
     var password = req.body.Password;
-    bcrypt.hash(password,10).then (hash => {
-        const data = new User ({
-            "_id": email,
-            "name": name,
-            "password": hash
-        })
-        try {
-            data.save()
-            res.status(200).render('home.hbs', {layout:'layout2'});    
-            signedin = email;
-            fs.mkdir('data/'+signedin,(error) => {
-                if (error) {
-                    console.log(error);
+    User.findById(req.body.Email, (err,docs) => {
+        if(docs == null) {
+            bcrypt.hash(password,10).then (hash => {
+                const data = new User ({
+                    "_id": email,
+                    "name": name,
+                    "password": hash
+                })
+                try {
+                    data.save()
+                    res.status(200).render('signin.hbs');    
+                    fs.mkdir('data/'+signedin,(error) => {
+                        if (error) {
+                            console.log(error);
+                        }
+                    })
+                } catch (error) {
+                    console.log(error)
                 }
-            })
-        } catch (error) {
-            console.log(error)
+            }) 
+        }
+        else {
+            res.status(200).render('signin.hbs');
         }
     })
+    
 })
 app.all('*', (req, res) => {
     if(signedin == false) {

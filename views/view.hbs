@@ -4,8 +4,8 @@
         {{#each jsonfiles}}
         <div class="col-lg-4 d-flex justify-content-center mb-5">
             <div class="view-card card" style="width: 18rem;">
-                <div class="card-body" onclick="viewfull({{@index}})">
-                    <h5 class="card-title">{{this.fname}}</h5>
+                <div class="card-body" onclick="viewfull()">
+                    <h5 class="card-title" id="view-title">{{this.fname}}</h5>
                 </div>
             </div>
         </div>

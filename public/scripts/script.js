@@ -10,10 +10,6 @@ function signout() {
     window.location.href = "/signout"
 }
 
-// let index;
-function viewfull(x) {
-    // index = x;
+function viewfull() {
     window.location.href = "/viewfull"
 }
-
-// module.exports = index;

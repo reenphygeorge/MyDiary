@@ -1,10 +1,13 @@
 <div class="container">
-    <h1 class="text-center main-head mt-5">Add</h1>
+    <h1 class="text-center main-head mt-5">View</h1>
     <div class="row mt-5 d-flex justify-content-center">
-        <div class="card diary-view-card" style="width: 50rem;">
+        {{#each jsondiary}}
+        <div class="card diary-view-card mb-5" style="width: 50rem;">
             <div class="card-body">
-                <h1 id="view-title">Hey there</h1>
+                <h6>{{this.date}}</h6>
+                <h1>{{this.data}}</h1>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>
