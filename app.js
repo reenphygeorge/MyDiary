@@ -4,14 +4,18 @@ const bodyParser = require('body-parser')
 const path = require('path');
 
 const handlebars = require('express-handlebars');
-
 const fs = require('fs');
-var signedin = false;
 
+// To encrypt the password //
+const bcrypt = require('bcrypt');
+
+// Mongo Connection and Schema objects //
 const db = require(__dirname+"/connection")
 const User = require(__dirname+"/userschema")
 
-const bcrypt = require('bcrypt');
+// To check whether the person has signed in //
+var signedin = false;
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view-engine', 'hbs');
@@ -61,17 +65,19 @@ app.get('/view', (req, res) => {
 
             files.forEach((item, index)=> {
                 fs.readFile(loc+"/"+item, 'utf8', function(err, data){
-                    var obj = {"date": item,"data": data}
+                    var showdown  = require('showdown'),
+                    converter = new showdown.Converter(),
+                    text      = data,
+                    html      = converter.makeHtml(text);
+                    var obj = {"date": item,"data": html}
                     jsondiary.push(obj)
-                    res.status(200).render('viewfull.hbs', {jsondiary, layout:'layout2'})
+                    res.status(200).render('view.hbs', {jsondiary, layout:'layout2'})
                 })
             })
         })
     }
 });
-app.get('/viewfull', (req,res) => {
-    res.status(200).render('viewfull.hbs', {layout:'layout2'})
-})
+
 app.get('/signin', (req, res) => {
     res.status(200).render('signin.hbs')
 })
@@ -80,7 +86,7 @@ app.post('/signin', (req,res) => {
         if(err) console.log(err)
         else {
             if(docs == null)
-                res.status(200).render('signin.hbs');
+                res.status(200).render('signup.hbs');
             else
             {
                 bcrypt.compare(req.body.Password, docs.password, (err,response)=>{
@@ -117,7 +123,8 @@ app.post('/signup', (req,res) => {
                 })
                 try {
                     data.save()
-                    res.status(200).render('signin.hbs');    
+                    res.status(200).render('signin.hbs'); 
+                    signedin = email;   
                     fs.mkdir('data/'+signedin,(error) => {
                         if (error) {
                             console.log(error);

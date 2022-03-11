@@ -10,6 +10,5 @@ function signout() {
     window.location.href = "/signout"
 }
 
-function viewfull() {
-    window.location.href = "/viewfull"
-}
+var x = require('/home/reenphy/Code/MyDiary/app')
+console.log(x)

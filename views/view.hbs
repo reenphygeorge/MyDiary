@@ -1,12 +1,11 @@
 <div class="container">
     <h1 class="text-center main-head mt-5">View</h1>
-    <div class="row mt-5">
-        {{#each jsonfiles}}
-        <div class="col-lg-4 d-flex justify-content-center mb-5">
-            <div class="view-card card" style="width: 18rem;">
-                <div class="card-body" onclick="viewfull()">
-                    <h5 class="card-title" id="view-title">{{this.fname}}</h5>
-                </div>
+    <div class="row mt-5 d-flex justify-content-center">
+        {{#each jsondiary}}
+        <div class="card diary-view-card mb-5" style="width: 50rem;">
+            <div class="card-body">
+                <h6>{{this.date}}</h6>
+                <div>{{{this.data}}}</div>
             </div>
         </div>
         {{/each}}
