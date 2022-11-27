@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "author": "Reenphy George",
+  "scripts": {
+    "start": "nodemon app.js",
+    "build": "babel src -d dist --copy-files",
+    "production": "npm run build && nodemon ./dist/app.js",
+    "dev": "nodemon --watch src --exec npm run production",
+    "clean": "npm cache clean --force"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.17",
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "supertokens-node": "^12.1.1"
+  }
+}
