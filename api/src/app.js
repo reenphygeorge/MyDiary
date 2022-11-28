@@ -6,10 +6,17 @@ import EmailPassword from "supertokens-node/recipe/emailpassword";
 import cors from "cors";
 import { middleware, errorHandler } from "supertokens-node/framework/express";
 import Dashboard from "supertokens-node/recipe/dashboard";
+import router from './app/routes'
 
 const app = express();
 dotenv.config()
 
+app.use(express.json());
+
+// Router //
+app.use(router);
+
+// SuperTokens Init //
 supertokens.init({
     framework: "express",
     supertokens: {
@@ -31,14 +38,16 @@ supertokens.init({
     ]
 });
 
+// SuperTokens CORS and middleware
 app.use(cors({ origin: process.env.WEB_DOMAIN, allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders()], credentials: true, }));
 app.use(middleware());
 
-app.get('/', (req, res) => {
-    res.json({ data: "Welocme!" });
-});
 
+// app.get('/content', verifySession(), (req, res) => {
+//     res.send('Authenticated')
+// })
+
+// Error Handler //
 app.use(errorHandler())
-// your own error handler
-app.use((err, req, res, next) => { /* ... */ });
+
 app.listen(process.env.API_PORT)
