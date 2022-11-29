@@ -161,12 +161,12 @@ top: 55%;
 .dashboard-content {
     width: 55%;
     height: 500px;
-    margin: auto;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2,400px);
     column-gap: 100px;
     row-gap: 100px;
-    grid-auto-rows: minmax(250px, auto);
+    grid-auto-rows: minmax(250px, 300px);
 }
 
 .notes {
@@ -175,7 +175,65 @@ top: 55%;
 }
 
 .add-notes {
-    border: 1px black solid;   
+    border: 3px solid #B78763;
+    text-align: center;
+    justify-content: center;  
+    font-family: 'Syne Mono', monospace;
+    color: #B78763;
+    font-size: 30px;
+}
+
+/* dashboard */
+#add-btn {
+    border-radius: 500px;
+    border: none;
+    background: #CAEDE3;
+}
+
+/* add memory page */
+#date {
+    font-family: 'Syne Mono', monospace;
+    font-size: 30px;
+    margin: 0 auto;
+    text-align: left;
+   justify-content: center;
+   margin-left: 10%;
+   color: #B78763;
+}
+
+
+#title {
+    width: 50%;
+    height: 72px;
+    background: #D9D9D9;
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    border: 3px solid #B78763;
+}
+
+#memory-body {
+    width: 50%;
+    background: #D9D9D9;
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 40px;
+    font-weight: 400;
+    justify-content: start;
+    text-align: start;
+    border: 3px solid #B78763;
+}
+
+.add-form {
+    margin-bottom: 50px;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 @media  screen and (max-width: 1200px) {
@@ -214,4 +272,6 @@ top: 55%;
     font-size: 24px;
    }
   }
+
+
 
