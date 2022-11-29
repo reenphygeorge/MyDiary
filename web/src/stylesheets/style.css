@@ -20,7 +20,7 @@ body{
     font-family: 'Syne Mono', monospace;
     font-size: 50px;
     color: #B78763;
-    left: 3%;
+    left: 10%;
     top: 2%;
     margin: 0;
 }
@@ -69,7 +69,7 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+    text-align: center;
 }
 
 .content-heading {
@@ -172,6 +172,3 @@ z-index: -1;
    
 }
 
-#signin-logo {
-    left:10%;
-}
