@@ -1,174 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&family=Syne+Mono&family=The+Girl+Next+Door&display=swap');
-
-* {
-    box-sizing: border-box;
-}
-
 body{
-    font-family: 'Roboto' , sans-serif;
-    height: 100vh;
-    overflow: hidden;
-    margin: 0;
-    background: #CAEDE3;
-    display: flex;
-    flex-direction: column;
+    background-color: #CAEDE3;
+    overflow-x: hidden;
+}
+.star_background{
+    margin-left: 2%;
 }
 
-.logo {
+.star_background img {
+    height: 150px;
+}
+
+.about{
     position: absolute;
+    top: 5%;
+    right: 3%;
+    background-color: #D3B94F;
+    border-radius: 50px;
+    width: 110px;
+    height: 40px;
+    /* margin-top:2%;
+    margin-left: 85%; */
+    color: aliceblue;
+    font-size: 22px;
     font-family: 'Syne Mono', monospace;
-    font-size: 50px;
+}
+.heading{
+    margin-top: -3%;
+    font-family: 'Swanky and Moo Moo', cursive;
     color: #B78763;
-    left: 10%;
-    top: 2%;
-    margin: 0;
+    font-size: 45px;
+    
 }
-
-h2 {
-    border-left: 15px;
-}
-.about {
-   position: absolute;
-   right: 2%;
-   top: 2%;
-   background: #D3B94F ;
-   height: 50px;
-   width: 100px;
-   border-radius: 25px;
-   border: none;
-   color: #CAEDE3;
-   font-size: 25px;
-}
-
-.btn {
-    background: #D3B94F ;
-   height: 50px;
-   width: 150px;
-   border-radius: 25px;
-   border: none;
-   color: #CAEDE3;
-   font-size: 30px;
-}
-
-.sign-in {
-    position: absolute;
-    top: 75%;
-    left: 42%;
-    width: 200px;
-}
-
-.header {
-    display: flex;
-    flex-direction: row;
-}
-
-
-
-.content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.he{
     text-align: center;
 }
 
-.content-heading {
-    position: absolute;
-    left: 18%;
-    top: 15%;
-    font-size: 96px;
-    font-family: 'Swanky and Moo Moo', cursive;
-    color: #B78763;
-}
-
-.content-line {
-    display: block;
-    position: absolute;
-    left: 28%;
+.de{
+    text-align: center;
     font-family: 'The Girl Next Door', cursive;
-    font-size: 48px;
-}
-.line1 { 
-    top: 40%;
-}
-
-.line2 {
-    top: 48%;
-}
-.line3 {
-    top: 56%;
+    font-size: 28px;
+    margin-right: 30%;
+    margin-top: -3%;
+    margin-left: 30%;
 }
 
-.diary-img {
+.SignButton{
+    display:flex;
+    justify-content: center;
+}
+.sign{
     position: absolute;
-width: 500px;
-height: 300px;
-right: 7%;
-top: 60%;
-z-index: -1;
+    /* right: 3%; */
+    background-color: #D3B94F;
+    border-radius: 50px;
+    width: 110px;
+    height: 40px;
+    color: aliceblue;
+    font-size: 22px;
+    font-family: 'Syne Mono', monospace;
 }
-
-
-
-/* login and sign up */
-.welcome {
-    position: absolute;
-    font-family: 'Swanky and Moo Moo', cursive;
-    font-size: 96px;
-    color: #B78763;
-    top: 5%;
-    left: 40%;
-}
-
-
-.login-text1 {
-    display: block;
-    position: absolute;
-    left: 33%;
-    font-family: 'The Girl Next Door', cursive;
-    font-size: 48px;
-    top: 25%
-}
-
-.login-text2 {
-    display: block;
-    position: absolute;
-    left: 33%;
-    font-family: 'The Girl Next Door', cursive;
-    font-size: 48px;
-    top: 32%
-}
-
-#email {
-    position: absolute;
-    width: 556px;
-    height: 72px;
-    left: 33%;
-    top: 50%;
-    background: #D9D9D9;
-    font-family: 'The Girl Next Door', cursive;
-    font-size: 40px;
-    font-weight: 400;
-}
-
-#password {
-    position: absolute;
-    width: 556px;
-    height: 72px;
-    left: 33%;
-    top: 62%;
-    background: #D9D9D9;
-    font-family: 'The Girl Next Door', cursive;
-    font-size: 40px;
-    font-weight: 400;
-}
-
-#bind {
-    position: absolute;
-    width: 118px;
-    height: 1052px;
-    left: 0px;
-    top: 0px;
+.Diary{
+    display: flex;
+    justify-content:end;
+    margin-top: -6%;
+    margin-right: 15%;
+    height: 200px;
    
 }
 
+
+@media only screen and (max-width: 500px) {
+
+   
+.heading{
+    margin-top: -20%;
+    font-family: 'Swanky and Moo Moo', cursive;
+    color: #B78763;
+    font-size: 45px;
+    
+}
+
+.he{
+    text-align: center;
+}
+
+.de{
+    text-align: center;
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 28px;
+    margin-right: 15%;
+    margin-top: -15%;
+    margin-left: 15%;
+   position: relative;
+}
+.Diary{
+    display: flex;
+    justify-content:end;
+    margin-top: -20%;
+    margin-right: -27%;
+    height: 200px;
+}
+
+}
