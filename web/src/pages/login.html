@@ -5,35 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyDiary</title>
-    <link rel="stylesheet" href="/MyDiary/web/src/stylesheets/style.css">
+    <link rel="stylesheet" href="../stylesheets/style.css">
   </head>
   <body>
     <img src="../images/photo6061896707223957804 1.png" alt="bind" id="bind" >
     <div class="header">
       <h2 class="logo" id="signin-logo">MyDiary</h2>
+      <div class="stars">
+        <img src="../images/Desktop - 4.png" alt="stars">
+    </div>     
     </div>
-    <h1 class="welcome">Welcome</h1>
-    <p class="login-text1">Login to MyDiary to create</p>
-    <p class="login-text2">awesome memories</p>
+    <div class="top-content">
+      <h1 class="welcome">Welcome</h1>
+    <p class="login-text">Login to MyDiary to create <br> awesome memories</p>
+    </div>
+    
 
     <div class="form">
-      <input
-              type='email'
-              className='form-control'
-              id='email'
-              name='email'
-              placeholder='username'
-              required
-            />
-
-            <input
-              type='password'
-              className='form-control'
-              id='password'
-              name='password'
-              placeholder='password'
-              required
-            />
+      <div class="input-div">
+        <input
+        type='email'
+        className='form-control'
+        id='email'
+        name='email'
+        placeholder='username'
+        required
+      />
+      </div>
+     
+      <div class="input-div">
+        <input
+        type='password'
+        className='form-control'
+        id='password'
+        name='password'
+        placeholder='password'
+        required
+      />
+      </div>
+           
 
             <button class="btn sign-in" type="button">Signin</button>
     </div>
