@@ -7,12 +7,9 @@
 
 body{
     font-family: 'Roboto' , sans-serif;
-    height: 100vh;
-    overflow: hidden;
     margin: 0;
     background: #CAEDE3;
-    display: flex;
-    flex-direction: column;
+    overflow-x: hidden;
 }
 
 .logo {
@@ -28,18 +25,7 @@ body{
 h2 {
     border-left: 15px;
 }
-.about {
-   position: absolute;
-   right: 2%;
-   top: 2%;
-   background: #D3B94F ;
-   height: 50px;
-   width: 100px;
-   border-radius: 25px;
-   border: none;
-   color: #CAEDE3;
-   font-size: 25px;
-}
+
 
 .btn {
     background: #D3B94F ;
@@ -52,99 +38,100 @@ h2 {
 }
 
 .sign-in {
-    position: absolute;
-    top: 75%;
-    left: 42%;
+    
     width: 200px;
 }
 
 .header {
-    display: flex;
-    flex-direction: row;
+    height: 100px;
+}
+
+.stars {
+   margin-left: 65%;
 }
 
 
 
+.stars img {
+    height: 150px;
+}
+
 .content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+   margin: 0 auto;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 
 .content-heading {
-    position: absolute;
-    left: 18%;
-    top: 15%;
     font-size: 96px;
     font-family: 'Swanky and Moo Moo', cursive;
     color: #B78763;
 }
 
-.content-line {
-    display: block;
-    position: absolute;
-    left: 28%;
+.content-desc {
     font-family: 'The Girl Next Door', cursive;
     font-size: 48px;
-}
-.line1 { 
-    top: 40%;
+    justify-content: center;
+    padding: 1px 100px;
+    margin-top: -3%;
+    font-weight: 500;
 }
 
-.line2 {
-    top: 48%;
-}
-.line3 {
-    top: 56%;
-}
 
 .diary-img {
-    position: absolute;
 width: 500px;
 height: 300px;
-right: 7%;
-top: 60%;
+position: absolute;
 z-index: -1;
+right: 2%;
+top: 55%;
 }
+
+
 
 
 
 /* login and sign up */
+
+.top-content {
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+}
+
 .welcome {
-    position: absolute;
     font-family: 'Swanky and Moo Moo', cursive;
     font-size: 96px;
     color: #B78763;
-    top: 5%;
-    left: 40%;
+    margin-bottom: 5px;
 }
 
 
-.login-text1 {
-    display: block;
-    position: absolute;
-    left: 33%;
+.login-text {
     font-family: 'The Girl Next Door', cursive;
     font-size: 48px;
-    top: 25%
+    margin: 0;
+    line-height: 1.5em;
 }
 
-.login-text2 {
-    display: block;
-    position: absolute;
-    left: 33%;
-    font-family: 'The Girl Next Door', cursive;
-    font-size: 48px;
-    top: 32%
+.form {
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
 }
 
+.input-div {
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 15px;
+}
 #email {
-    position: absolute;
+   
     width: 556px;
     height: 72px;
-    left: 33%;
-    top: 50%;
     background: #D9D9D9;
     font-family: 'The Girl Next Door', cursive;
     font-size: 40px;
@@ -152,11 +139,9 @@ z-index: -1;
 }
 
 #password {
-    position: absolute;
+    
     width: 556px;
     height: 72px;
-    left: 33%;
-    top: 62%;
     background: #D9D9D9;
     font-family: 'The Girl Next Door', cursive;
     font-size: 40px;
@@ -164,11 +149,69 @@ z-index: -1;
 }
 
 #bind {
-    position: absolute;
+    position: fixed;
     width: 118px;
-    height: 1052px;
+    height: 100vh;
     left: 0px;
     top: 0px;
    
 }
+
+
+.dashboard-content {
+    width: 55%;
+    height: 500px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2,400px);
+    column-gap: 100px;
+    row-gap: 100px;
+    grid-auto-rows: minmax(250px, auto);
+}
+
+.notes {
+    border: 1px black solid;
+    
+}
+
+.add-notes {
+    border: 1px black solid;   
+}
+
+@media  screen and (max-width: 1200px) {
+    .content-heading {
+         font-size: 60px;
+    }
+ 
+    #bind {
+     display: none;
+    }
+
+    .diary-img {
+        display: none;
+    }
+ 
+    .content-desc {
+     font-size: 36px;
+    }
+   }
+
+@media  screen and (max-width: 800px) {
+   .content-heading {
+        font-size: 48px;
+   }
+
+
+   .logo {
+      font-size: 30px;
+   }
+
+   #bind {
+    display: none;
+   }
+
+   .content-desc {
+    font-size: 24px;
+   }
+  }
 
