@@ -10,7 +10,9 @@ supertokens.init({
     ],
 });
 
-async function signUpClicked(email, password) {
+async function signUpClicked() {
+    const email = document.getElementById('email-signup').value;
+    const password = document.getElementById('password-signup').value;
     try {
         let response = await supertokensEmailPassword.signUp({
             formFields: [{
@@ -38,7 +40,7 @@ async function signUpClicked(email, password) {
         } else {
             // sign up successful. The session tokens are automatically handled by
             // the frontend SDK.
-            window.location.href = "/homepage"
+            window.location.href = "/web/src/pages/dashboard.html"
         }
     } catch (err) {
         if (err.isSuperTokensGeneralError === true) {
@@ -53,16 +55,16 @@ async function signUpClicked(email, password) {
 
 
 async function signInClicked() {
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
+    const login_email = document.getElementById('email').value;
+    const login_password = document.getElementById('password').value;
     try {
         let response = await supertokensEmailPassword.signIn({
             formFields: [{
                 id: "email",
-                value: email
+                value: login_email
             }, {
                 id: "password",
-                value: password
+                value: login_password
             }]
         })
 
@@ -85,7 +87,7 @@ async function signInClicked() {
         } else {
             // sign up successful. The session tokens are automatically handled by
             // the frontend SDK.
-            window.location.href = "/dashboard.html"
+            window.location.href = "/web/src/pages/dashboard.html"
         }
     } catch (err) {
         if (err.isSuperTokensGeneralError === true) {
