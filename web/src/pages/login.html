@@ -23,6 +23,7 @@
 
     <div class="form">
       <div class="input-div">
+        <form action="" method="post">
         <input
         type='email'
         className='form-control'
@@ -44,12 +45,14 @@
         value=""
         required
       />
+    </form>
       </div>
            
 
-            <button class="btn sign-in" type="button">Signin</button>
+            <button class="btn sign-in" type="button" onclick="signInClicked()">Signin</button>
             <a href="./signup.html"><h3 id="new-user">new user?</h3></a>
     </div>
+    <script src="../scripts/script.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/supertokens/supertokens-web-js/bundle/website.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/supertokens/supertokens-web-js/bundle/supertokens.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/supertokens/supertokens-web-js/bundle/session.js"></script>

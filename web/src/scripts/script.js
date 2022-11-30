@@ -8,3 +8,4 @@ let day = days[d.getDay()];
 const markup = `<h2>${day},${d.getDate()+' '+month+','+d.getFullYear()}</h2>`
                 
 date_time.innerHTML = markup;
+
