@@ -50,7 +50,11 @@ async function signUpClicked(email, password) {
     }
 }
 
-async function signInClicked(email, password) {
+
+
+async function signInClicked() {
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
     try {
         let response = await supertokensEmailPassword.signIn({
             formFields: [{
@@ -81,7 +85,7 @@ async function signInClicked(email, password) {
         } else {
             // sign up successful. The session tokens are automatically handled by
             // the frontend SDK.
-            window.location.href = "/homepage"
+            window.location.href = "/dashboard.html"
         }
     } catch (err) {
         if (err.isSuperTokensGeneralError === true) {
@@ -97,3 +101,4 @@ async function logout() {
     await supertokensSession.signOut();
     window.location.href = "/web/src/pages/login.html";
 }
+
