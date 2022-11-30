@@ -1,13 +1,8 @@
 import express from 'express';
 import { verifySession } from "supertokens-node/recipe/session/framework/express";
-import { createUser, readUser, updateUser } from './service';
+import { createUser, readUser, addDiary, updateDiary } from './service';
 
 const router = express.Router();
-
-// router.get('/content', verifySession(), (req, res) => {
-//     res.json({ response: "User Data" });
-//     res.end();
-// });
 
 router.get('/content', verifySession(), async (req, res) => {
     const response = await readUser(req.query.email)
@@ -15,20 +10,27 @@ router.get('/content', verifySession(), async (req, res) => {
     res.end();
 });
 
-router.post('/content', verifySession(), (req, res) => {
+router.post('/content', (req, res) => {
     createUser(req.body)
     res.send({ response: "New user created" });
     res.end();
 })
 
-router.patch('/content', verifySession(), (req, res) => {
-    const response = updateUser(req.query.email, req.body)
+router.put('/content', (req, res) => {
+    const response = addDiary(req.query.email, req.body)
     res.send({ response: "Updated" });
     res.end();
 })
 
-// router.delete('/content', verifySession(), (req, res) => {
-//     console.log(req.query.contentid);
+router.patch('/content', (req, res) => {
+    const response = updateDiary(req.query.email, req.query.cid, req.body)
+    res.send({ response: "Updated" });
+    res.end();
+})
+
+// router.delete('/content', (req, res) => {
+//     const response = deleteDiary(req.query.email, req.query.cid)
+//     // console.log(req.query.contentid);
 //     res.send({ response: "Diary content deleted" });
 //     res.end();
 // })

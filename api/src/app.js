@@ -42,11 +42,6 @@ supertokens.init({
 app.use(cors({ origin: process.env.WEB_DOMAIN, allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders()], credentials: true, }));
 app.use(middleware());
 
-
-// app.get('/content', verifySession(), (req, res) => {
-//     res.send('Authenticated')
-// })
-
 // Error Handler //
 app.use(errorHandler())
 
