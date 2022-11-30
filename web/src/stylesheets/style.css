@@ -157,6 +157,15 @@ top: 55%;
    
 }
 
+a {
+    text-decoration: none;
+}
+
+#new-user {
+    font-family: 'The Girl Next Door', cursive;
+    color: #B78763;
+}
+
 
 .dashboard-content {
     width: 55%;
