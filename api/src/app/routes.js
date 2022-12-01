@@ -26,7 +26,7 @@ router.post('/user/diary', (req, res) => {
 
 // localhost:8000/user/diary?cid= (to update a content with diary id)
 router.patch('/content/diary', (req, res) => {
-    const response = updateDiary(req.query.email, req.query.cid, req.body)
+    const response = updateDiary(req.query.cid, req.body)
     res.send(response);
     res.end();
 });
